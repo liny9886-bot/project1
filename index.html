@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>城覓綠舟 | 臺中公園影展專題介紹</title>
+    <!-- SEO 與 Meta 標籤 -->
+    <meta name="description" content="逢甲大學大二影展專題，以淺粉色系美學深入探索臺中公園的簡介、歷史文化、景點特色、休閒設施與都市綠洲比較，內含完整文獻來源。">
+    <style>
+        /* CSS 樣式設定 (淺粉色系與 RWD 網格系統) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", sans-serif;
+            background-color: #fffafb; /* 極淡粉白背景 */
+            color: #4a3b40;
+            line-height: 1.7;
+        }
+
+        /* 導覽列 (柔和玫瑰粉) */
+        header {
+            background-color: #d47a94;
+            color: white;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(212, 122, 148, 0.2);
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.2rem;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffe3ec;
+        }
+
+        /* 主視覺 Banner (浪漫粉色漸層) */
+        .hero {
+            background: linear-gradient(rgba(212, 122, 148, 0.65), rgba(122, 75, 93, 0.75)), url('images/banner.jpg') center/cover no-repeat;
+            background-color: #e29ab0;
+            color: white;
+            text-align: center;
+            padding: 4.5rem 1rem;
+        }
+
+        .hero h2 {
+            font-size: 2.3rem;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+            color: #fff5f8;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1100px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(212, 122, 148, 0.06);
+            border: 1px solid #fae1ed;
+        }
+
+        h3.section-title {
+            color: #9c4762;
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 3px solid #f2a7be;
+            padding-bottom: 0.4rem;
+            display: inline-block;
+        }
+
+        /* Grid System 網格系統 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background: #fff6f9;
+            border: 1px solid #fce4ec;
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(212, 122, 148, 0.12);
+        }
+
+        .card h4 {
+            color: #b05773;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* 比較表格樣式 */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #fce4ec;
+        }
+
+        th {
+            background-color: #d47a94;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fff6f9;
+        }
+
+        /* 影音與地圖嵌入容器 */
+        .media-box {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            margin-top: 1rem;
+        }
+
+        .media-box iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 8px;
+        }
+
+        /* 列表樣式 */
+        ul.styled-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul.styled-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed #fce4ec;
+        }
+
+        ul.styled-list li a {
+            color: #9c4762;
+            text-decoration: none;
+        }
+
+        ul.styled-list li a:hover {
+            text-decoration: underline;
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: #61303f;
+            color: #f7d6e0;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+
+        /* RWD 響應式調整 */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav {
+                margin-top: 0.8rem;
+            }
+            nav a {
+                margin: 0 0.5rem;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+   <header>
+        <h1>城覓綠舟：臺中公園影展專題</h1>
+        <nav>
+            <a href="#intro">一、簡介</a>
+            <a href="#history">二、歷史</a>
+            <a href="#features">三、特色</a>
+            <a href="#comparison">四、競爭</a>
+            <a href="#swot">五、SWOT</a>
+            <a href="#segmentation">六、區隔</a>
+            <a href="#target">七、客群</a>
+            <a href="#positioning">八、定位</a>
+            <a href="#video">九、影音</a>
+            <a href="#map">十、位置</a>
+            <a href="#sources">十一、來源</a>
+        </nav>
+    </header>
+
+    <section class="hero" style="margin-bottom: 0;">
+        <h2>呼吸，就在市中心 — 臺中公園影展專題</h2>
+        <p>以「純淨綠洲」與「低度商業化」為核心，探討百年歷史古蹟與當代社群療癒的完美交會。</p>
+    </section>
+
+    <div class="container">
+
+        <section id="intro">
+            <h2>一、簡介</h2>
+            <p>臺中公園（中山公園）設立於 1907 年，是臺中市現存歷史最悠久的公園。總面積約 32,889 坪，園內古木參天、綠意盎然。本專案以「城覓綠舟」為題，探討現代都市人在高壓快速運轉的生活節奏中，如何透過這座市中心的自然綠洲尋找喘息空間，結合生態、療癒、文化與公共活動，賦予百年公園當代新價值。</p>
+        </section>
+
+        <section id="history">
+            <h2>二、歷史文化背景</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>湖心亭的誕生 (1908)</h3>
+                    <p>建於1908年，為慶祝縱貫鐵路全線通車而興建，雙併式尖頂涼亭座落於日月湖水面上，為臺中市高度代表性的市定古蹟與地標。</p>
+                </div>
+                <div class="card">
+                    <h3>豐富的人文古蹟群</h3>
+                    <p>園區內融合了日治時期臺中神社遺構、抗日紀念碑，以及遷建自吳厝莊的清代傳統官式建築「更樓」，兼具深厚的歷史脈絡與文化保存價值。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <h2>三、景點特色</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>日月湖與湖心亭景觀</h3>
+                    <p>核心水景搭配虹橋與倒影，提供市民與遊客浪漫的散步與賞景視野。</p>
+                </div>
+                <div class="card">
+                    <h3>日月湖觀光小船體驗</h3>
+                    <p>保留傳統的划船/小船體驗，讓造訪者能從水面視角重新感受公園的悠閒氛圍。</p>
+                </div>
+                <div class="card">
+                    <h3>自然與古蹟並存</h3>
+                    <p>非單純草地空間，而是結合了湖泊、百年老樹、歷史遺跡與開放公共空間的多維度場域。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparison">
+            <h2>四、競爭者分析表</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>分類項目</th>
+                            <th>臺中公園 (本專題)</th>
+                            <th>中央公園</th>
+                            <th>秋紅谷</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>風格定位</strong></td>
+                            <td>日治古典歷史風</td>
+                            <td>現代科技智慧風</td>
+                            <td>景觀生態滯洪池</td>
+                        </tr>
+                        <tr>
+                            <td><strong>核心水景活動</strong></td>
+                            <td>湖心亭與虹橋划船</td>
+                            <td>抹茶湖與橋梁 (看飛機)</td>
+                            <td>生態湖餵魚與倒影</td>
+                        </tr>
+                        <tr>
+                            <td><strong>周邊餐飲機能</strong></td>
+                            <td>一中商圈、東協廣場、第二市場</td>
+                            <td>逢甲商圈</td>
+                            <td>七期百貨商圈 (LaLaport等)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>特色優勢</strong></td>
+                            <td>百年歷史古蹟與鬧中取靜的綠洲感</td>
+                            <td>大面積運動與現代休憩空間</td>
+                            <td>都市下凹谷地觀景賞夜景</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="swot">
+            <h2>五、SWOT內外部環境分析</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>優勢 (Strengths)</h3>
+                    <p>1.超過百年歷史與高度城市辨識度（湖心亭）。<br>2.位於市中心，具備極高的可及性。<br>3.自然環境與歷史文化完美並存。<br>4.免門票之高度公共性與低門檻。</p>
+                </div>
+                <div class="card">
+                    <h3>劣勢 (Weaknesses)</h3>
+                    <p>1.資源雖豐富，但整體主題識別度尚顯不足。<br>2.公共綠地與商業活動（如攤販噪音、垃圾）容易產生衝突。<br>3.古蹟高規格保存維護與日常高頻率使用需求需取得平衡。</p>
+                </div>
+                <div class="card">
+                    <h3>機會 (Opportunities)</h3>
+                    <p>1.政府政策積極推動「療癒型、共融型、永續型公園」。<br>2.社會對生活品質與居住環境價值意識提升。<br>3.善用數位媒體與短影音（IG、Threads）提升年輕族群觸及。</p>
+                </div>
+                <div class="card">
+                    <h3>威脅 (Threats)</h3>
+                    <p>1.來自草悟道、帝國製糖廠等新興綠地的同業競爭。<br>2.過度商業化可能侵蝕都市綠洲「不用消費也能享受自然」的核心價值。<br>3.大型展演活動容易對環境與日常使用者造成噪音與垃圾干擾。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="segmentation">
+            <h2>六、市場區隔 (Market Segmentation)</h2>
+            <div class="grid">
+                <div class="card">
+                    <h4>日常放鬆族群</h4>
+                    <p><strong>特徵：</strong> 生活步調緊湊的在地上班族與學生。<br><strong>需求：</strong> 需要都市綠洲來釋放壓力，進行早晚散步與草皮放空。</p>
+                </div>
+                <div class="card">
+                    <h4>社群打卡族群</h4>
+                    <p><strong>特徵：</strong> 追求獨特美學與新鮮體驗的 Z 世代、Y 世代年輕族群。<br><strong>需求：</strong> 喜愛具特色、好拍照且能透過 IG、Threads 分享互動的景點。</p>
+                </div>
+                <div class="card">
+                    <h4>親子休閒與歷史漫步族群</h4>
+                    <p><strong>特徵：</strong> 家有小孩的家長及文史愛好者、中高齡民眾。<br><strong>需求：</strong> 尋求寓教於樂的戶外共學，或對日治古蹟與城市記憶進行深度人文漫步。</p>
+                </div>
+            </div>
+        </section>
+
+       <section id="target">
+            <h2>七、目標客群分析 (Target Audience)</h2>
+            <p>本專題將目標客群精準鎖定於<strong>「渴望身心療癒的日常放鬆族群」</strong>與<strong>「追求視覺美感的社群打卡族群」</strong>：</p>
+            <ul class="styled-list" style="margin-top: 1rem;">
+                <li><strong>心理與行為需求：</strong> 長期承受都市高壓，對綠地舒適度高度敏感，習慣利用空檔到公園散步野餐，並將美景與質感體驗上傳至社群平台擴大聲量。</li>
+                <li><strong>Persona 代表（如訪談人物誌所示）：</strong> 涵蓋熱愛社群記錄的 22 歲大學生（重視視覺亮點與同儕共鳴），以及重視下班獨處沉澱的 37 歲在地上班族（尋求快速切換心境的療癒角落）。</li>
+            </ul>
+        </section>
+
+         <section id="positioning">
+            <h2>八、市場定位 (Market Positioning)</h2>
+            <p>本專題將臺中公園定位為：<strong>「都市核心中的純粹綠洲」</strong>。透過主打「低度商業化」與「深厚百年歷史紋理」，避開過度商業化的喧擾，提供兼具心靈沉澱、日常療癒與歷史漫步的獨特綠地體驗，與草悟道等商圈形成互補。</p>
+        </section>
+
+       <hr>
+            <section id="video">
+                <h2>九、影音報導</h2>
+                <p>透過下方影片認識台中公園，再比較影片畫面與本文介紹的景點。</p>
+                <figure>
+                    <iframe width="560" height="315" 
+                    src="https://www.youtube.com/embed/hKBwFU5IJrc?si=RhiKneDUlrTxh_Xq&amp;start=5" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                    </iframe>
+                    <figcaption>影片：台中公園，百年古蹟｜發布者：緯旅行 birdwei walk 。</figcaption>
+                </figure>
+                <p>
+                    若播放器無法播放，請
+                    <a href="https://youtu.be/hKBwFU5IJrc?si=S_05ebdsTUHBPOw6" target="_blank" rel="noopener noreferrer">在 YouTube 觀看台中公園介紹影片（另開分頁）</a>。
+                </p>
+                <p><small>影片為外部作者的介紹，現場狀況請以最新官方資訊為準。</small></p>
+            </section>
+
+        <section id="map">
+                <h2>十、位置地圖：台中公園</h2>
+                <p>位於臺中市北區，地址為<strong>雙十路一段65號</strong>。
+                    下方地圖標示本文介紹的公園位置，方便讀者對照景點與周邊街道。</p>
+                <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.767028383025!2d120.68190127512804!3d24.144818478403522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d6b9b1624e5%3A0x104e57f0c891d03b!2z6Ie65Lit5YWs5ZyS!5e0!3m2!1szh-TW!2stw!4v1793797666346!5m2!1szh-TW!2stw" 
+                width="600" 
+                height="450" 
+                style="border:0;" allowfullscreen="" loading="lazy" 
+                referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
+                <p><a href="https://maps.app.goo.gl/6N5hHynYuM2qB1VT9" target="_blank" rel="noopener noreferrer">在Google地圖開啟台中公園（另開分頁）</a></p>
+                <p><small>位置查詢由Google地圖提供；抵達後請依現場導覽牌確認位置。</small></p>
+            </section>
+
+     <hr>
+            <section id="sources">
+                <h2>十一、資料來源</h2>
+                <p>本報導依下列資料整理。</p>
+                <ul>
+                    <li><a href="https://travel.taichung.gov.tw/zh-tw/attractions/intro/28" target="_blank" rel="noopener noreferrer">台中觀光旅遊網:台中公園</a></li>
+                    <li><a href="https://www.taiwan.net.tw/m1.aspx?sNo=0001112&id=A12-00079" target="_blank" rel="noopener noreferrer">交通部觀光署:台中公園</a></li>
+                    <li><a href="https://youtu.be/hKBwFU5IJrc?si=f0dLRl9X56lepoxG" target="_blank" rel="noopener noreferrer">YouTube：台中公園介紹影片</a></li>
+                </ul>
+                <p><small>資料整理日期：2026年11月05日。</small></p>
+            </section>
+        </article>
+    </main>
+
+   <hr>
+     <footer>
+        <p>台中公園介紹</p>
+        <p><small>作者:林雁慈 · 編輯日期：2026年11月05日</small></p>
+        <p><a href="#top">回到頁首</a></p>
+    </footer>
+    </body>
+</html>
